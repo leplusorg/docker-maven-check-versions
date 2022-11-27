@@ -17,7 +17,8 @@ while read -r l; do
     elif [[ "${l}" == *"updates are available:"* ]]; then
 	rc=$((rc+1))
     fi
-done <<< "$(./mvnw versions:display-dependency-updates \
+done <<< "$(./mvnw --batch-mode --errors --fail-at-end --show-version \
+                   versions:display-dependency-updates \
                    versions:display-plugin-updates \
      	           versions:display-property-updates)"
 
