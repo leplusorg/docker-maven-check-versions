@@ -1,6 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2086
 set -euo pipefail
+set -x
 IFS=$'\n\t'
 
 # shellcheck disable=SC2034
@@ -36,10 +37,6 @@ while read -r l; do
     elif [[ "${l}" == *"updates are available:"* ]]; then
 	rc=$((rc+1))
     fi
-done <<< "$(./mvnw ${MAVEN_CLI_OPTS} \
-                   versions:display-dependency-updates \
-                   versions:display-plugin-updates \
-     	           versions:display-property-updates \
-)"
+done <<< "$(./mvnw ${MAVEN_CLI_OPTS} versions:display-dependency-updates versions:display-plugin-updates versions:display-property-updates)"
 
 exit ${rc}
