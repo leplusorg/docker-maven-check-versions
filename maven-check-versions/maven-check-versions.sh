@@ -2,6 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# shellcheck disable=SC2034
 MAVEN_OPTS=' \
     -Dhttps.protocols=TLSv1.2 \
     -Dmaven.repo.local=.m2/repository \
