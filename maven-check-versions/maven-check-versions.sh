@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2086
 set -euo pipefail
 IFS=$'\n\t'
 
@@ -38,6 +39,6 @@ while read -r l; do
 done <<< "$(./mvnw ${MAVEN_CLI_OPTS} \
                    versions:display-dependency-updates \
                    versions:display-plugin-updates \
-     	           versions:display-property-updates)" # shellcheck disable=SC2086
+     	           versions:display-property-updates)"
 
 exit ${rc}
