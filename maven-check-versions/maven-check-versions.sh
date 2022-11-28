@@ -2,6 +2,21 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+MAVEN_OPTS= \
+    -Dhttps.protocols=TLSv1.2 \
+    -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository \
+    -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN \
+    -Dorg.slf4j.simpleLogger.showDateTime=true \
+    -Djava.awt.headless=true \
+
+MAVEN_CLI_OPTS= \
+    --batch-mode \
+    --errors \
+    --fail-at-end \
+    --show-version \
+    -DinstallAtEnd=true \
+    -DdeployAtEnd=true \
+
 rc=0
 
 while read -r l; do
@@ -17,7 +32,7 @@ while read -r l; do
     elif [[ "${l}" == *"updates are available:"* ]]; then
 	rc=$((rc+1))
     fi
-done <<< "$(./mvnw --batch-mode --errors --fail-at-end --show-version \
+done <<< "$(./mvnw ${MAVEN_CLI_OPTS} \
                    versions:display-dependency-updates \
                    versions:display-plugin-updates \
      	           versions:display-property-updates)"
