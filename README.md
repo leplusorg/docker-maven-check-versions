@@ -23,7 +23,7 @@ The script uses the Versions plugin (more details [here](https://www.mojohaus.or
 
 To use this container in a GitHub worklow, add the following action file `.github/workflows/maven-check-versions.yml` to your project:
 
-```
+```yaml
 ---
 name: Maven Check Versions
 
@@ -47,7 +47,7 @@ jobs:
 
 To use this container in a GitLab step, add the following step to the stage of your choice:
 
-```
+```yaml
 maven check versions:
   image:
     name: leplusorg/maven-check-versions:latest
