@@ -38,6 +38,6 @@ while read -r l; do
 done <<< "$(./mvnw ${MAVEN_CLI_OPTS} \
                    versions:display-dependency-updates \
                    versions:display-plugin-updates \
-     	           versions:display-property-updates)"
+     	           versions:display-property-updates)" # shellcheck disable=SC2086
 
 exit ${rc}
