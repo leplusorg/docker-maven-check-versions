@@ -17,6 +17,8 @@ while read -r l; do
 	rc=$((rc+1))
     elif [[ "${l}" == *"updates are available:"* ]]; then
 	rc=$((rc+1))
+    elif [[ "${l}" == *"BUILD FAILURE"* ]]; then
+	rc=$((rc+1))
     fi
 done <<< "$(./mvnw ${MAVEN_CLI_OPTS} versions:display-dependency-updates versions:display-plugin-updates versions:display-property-updates)"
 
