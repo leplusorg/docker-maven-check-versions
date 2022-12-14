@@ -1,4 +1,4 @@
-FROM openjdk:20-slim
+FROM openjdk:21-slim
 
 COPY maven-check-versions.sh /opt/
 
