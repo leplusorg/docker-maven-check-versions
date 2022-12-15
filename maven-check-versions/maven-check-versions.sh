@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 rc=0
 
-FS=' ' read -r -a opts <<< "${MAVEN_CLI_OPTS}"
+IFS=' ' read -r -a opts <<< "${MAVEN_CLI_OPTS}"
 
 while read -r l; do
     \echo "${l}"
