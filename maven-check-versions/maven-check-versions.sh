@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2086
 set -euo pipefail
-set +x
+set -x
 IFS=$'\n\t'
 
 rc=0
