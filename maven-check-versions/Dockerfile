@@ -8,4 +8,4 @@ ENV MAVEN_OPTS="${MAVEN_OPTS}"
 ARG MAVEN_CLI_OPTS="--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
 ENV MAVEN_CLI_OPTS="${MAVEN_CLI_OPTS}"
 
-RUN /opt/maven-check-versions.sh
+CMD ["/opt/maven-check-versions.sh"]
