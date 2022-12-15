@@ -5,6 +5,8 @@ IFS=$'\n\t'
 
 rc=0
 
+FS=' ' read -r -a opts <<< "${MAVEN_CLI_OPTS}"
+
 while read -r l; do
     \echo "${l}"
     if [[ "${l}" == *"[ERROR]"* ]]; then
@@ -20,6 +22,6 @@ while read -r l; do
     elif [[ "${l}" == *"BUILD FAILURE"* ]]; then
 	rc=$((rc+1))
     fi
-done <<< "$(./mvnw ${MAVEN_CLI_OPTS} versions:display-dependency-updates versions:display-plugin-updates versions:display-property-updates)"
+done <<< "$(./mvnw "${opts[@]}" versions:display-dependency-updates versions:display-plugin-updates versions:display-property-updates)"
 
 exit ${rc}
