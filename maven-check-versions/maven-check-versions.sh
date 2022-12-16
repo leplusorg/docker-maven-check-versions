@@ -6,6 +6,10 @@ shopt -s lastpipe
 
 if [ -f mvnw ]; then
   cmd='./mvnw'
+  if [ ! -z "${MAVEN_CONFIG+x}" ]; then
+    # resolve conflict with mvnw
+    unset MAVEN_CONFIG
+  fi
 else
   cmd='mvn'
 fi
