@@ -1,4 +1,4 @@
-FROM 3-openjdk-18-slim
+FROM maven:3
 
 COPY maven-check-versions.sh /opt/
 
