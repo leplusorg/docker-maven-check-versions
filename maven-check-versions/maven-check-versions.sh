@@ -18,6 +18,13 @@ fi
 
 rc=0
 
+env
+
+\echo "${cmd}" "${opts[@]}" \
+       versions:display-dependency-updates \
+       versions:display-plugin-updates \
+       versions:display-property-updates
+
 "${cmd}" "${opts[@]}" \
        versions:display-dependency-updates \
        versions:display-plugin-updates \
