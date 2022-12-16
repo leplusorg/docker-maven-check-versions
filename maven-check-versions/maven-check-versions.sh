@@ -10,7 +10,11 @@ else
   cmd='mvn'
 fi
 
-FS=' ' read -r -a opts <<< "${MAVEN_CLI_OPTS}"
+if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
+  opts=()
+else
+  FS=' ' read -r -a opts <<< "${MAVEN_CLI_OPTS}"
+fi
 
 rc=0
 
