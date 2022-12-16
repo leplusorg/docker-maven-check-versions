@@ -4,11 +4,17 @@ IFS=$'\n\t'
 
 shopt -s lastpipe
 
-rc=0
+if [ -f mvnw ]; then
+  cmd='./mvnw'
+else
+  cmd='mvn'
+fi
 
 FS=' ' read -r -a opts <<< "${MAVEN_CLI_OPTS}"
 
-./mvnw "${opts[@]}" \
+rc=0
+
+"${cmd}" "${opts[@]}" \
        versions:display-dependency-updates \
        versions:display-plugin-updates \
        versions:display-property-updates \
