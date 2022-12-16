@@ -13,7 +13,7 @@ Docker container to run the Maven Versions plugin.
 
 This containers is meant to be used in CI/CD pipeline to detect when newer versions of Maven dependencies or plugins are avaible.
 
-## Requirements
+## Maven version
 
 The image comes with Maven installed so it only needs a pom.xml to analyze. However if you want to control the version of Maven to be used instead, just make sure that there is a Maven wrapper script (mvnw) pointing to that version next to the pom.xml. For more information on how to install the maven wrapper in your project, see the [documentation](https://maven.apache.org/wrapper/).
 
