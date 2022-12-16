@@ -13,11 +13,33 @@ Docker container to run the Maven Versions plugin.
 
 This containers is meant to be used in CI/CD pipeline to detect when newer versions of Maven dependencies or plugins are avaible.
 
-## Maven version
+## Requirements
 
 The image comes with Maven installed so it only needs a pom.xml to analyze. However if you want to control the version of Maven to be used instead, just make sure that there is a Maven wrapper script (mvnw) pointing to that version next to the pom.xml. For more information on how to install the maven wrapper in your project, see the [documentation](https://maven.apache.org/wrapper/).
 
-The script uses the Versions plugin (more details [here](https://www.mojohaus.org/versions-maven-plugin/)).
+The script uses the Versions plugin (more details [here](https://www.mojohaus.org/versions-maven-plugin/)). By default Maven will use the latest version of the plugin that it supports but you can set the desired version inside your pom.xml:
+
+```xml
+<properties>
+  ...
+  <maven.versions.plugin>2.14.0</maven.versions.plugin>
+  ...
+</properties>
+...
+<build>
+  <pluginManagement>
+    <plugins>
+      ...
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>${maven.versions.plugin}</version>
+      </plugin>
+      ...
+    </plugins>
+  </pluginManagement>
+</build>
+```
 
 ## GitHub
 
