@@ -15,7 +15,7 @@ This containers is meant to be used in CI/CD pipeline to detect when newer versi
 
 ## Requirements
 
-If the Maven wrapper (mvnw) is present at the root of your project, the image will use that to let you control the version of Maven. Otherwise the version of Maven included in the image will be used instead. For more information on how to install the maven wrapper in your project, see the [documentation](https://maven.apache.org/wrapper/).
+The image comes with Maven installed so it only needs a pom.xml to analyze. However if you want to control the version of Maven to be used instead, just make sure that there is a Maven wrapper script (mvnw) pointing to that version next to the pom.xml. For more information on how to install the maven wrapper in your project, see the [documentation](https://maven.apache.org/wrapper/).
 
 The script uses the Versions plugin (more details [here](https://www.mojohaus.org/versions-maven-plugin/)).
 
