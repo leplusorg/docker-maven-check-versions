@@ -1,4 +1,4 @@
-FROM maven:3
+FROM maven:3.9.6
 
 COPY maven-check-versions.sh /opt/
 
