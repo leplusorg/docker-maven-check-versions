@@ -28,17 +28,12 @@ rc=0
        versions:display-property-updates \
     | while read -r l; do
     \echo "${l}"
-    if [[ "${l}" == *"[ERROR]"* ]]; then
-	rc=$((rc+1))
-    elif [[ "${l}" == *"has a newer version:"* ]]; then
-	rc=$((rc+1))
-    elif [[ "${l}" == *"have newer versions:"* ]]; then
-	rc=$((rc+1))
-    elif [[ "${l}" == *"update is available:"* ]]; then
-	rc=$((rc+1))
-    elif [[ "${l}" == *"updates are available:"* ]]; then
-	rc=$((rc+1))
-    elif [[ "${l}" == *"BUILD FAILURE"* ]]; then
+    if [[ "${l}" == *"[ERROR]"*
+	|| "${l}" == *"has a newer version:"*
+	|| "${l}" == *"have newer versions:"*
+        || "${l}" == *"update is available:"*
+        || "${l}" == *"updates are available:"*
+        || "${l}" == *"BUILD FAILURE"* ]]; then
 	rc=$((rc+1))
     fi
 done
