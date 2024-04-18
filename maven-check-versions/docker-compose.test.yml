@@ -6,4 +6,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: mvn -v
+    command: "sh -c '[ $(id -u) -ne 0 ] && mvn -v'"
