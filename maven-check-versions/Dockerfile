@@ -1,4 +1,4 @@
-FROM maven:3.9.6@sha256:c77dff91d47cc4f9e711b546b247cf62e3be6794c2084f4b6f08c75ee8d86a49
+FROM maven:3.9.6@sha256:0cd8671629d6becf5f40ac6e26822bffa9b3ed07bd3c038b88aa17e90dde5f7b
 
 COPY maven-check-versions.sh /opt/
 
