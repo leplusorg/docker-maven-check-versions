@@ -49,20 +49,24 @@ To use this container in a GitHub worklow, add the following action file `.githu
 name: Maven Check Versions
 
 on:
-  push:
-  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'
   workflow_dispatch:
+
+permissions: {}
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    container:
-      image: leplusorg/maven-check-versions:latest
+    container: leplusorg/maven-check-versions:1.0.0@sha256:e8f760bb1faf3d3c333d75810e82289fdd275688421cc8bad04cdbbc757ae5a
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
       - name: Check the versions
         run: /opt/maven-check-versions.sh
 ```
+
+This way the action can be triggered manually and otherwise it runs
+automatically once per week.
 
 ## GitLab
 
@@ -71,7 +75,7 @@ To use this container in a GitLab step, add the following step to the stage of y
 ```yaml
 maven check versions:
   image:
-    name: leplusorg/maven-check-versions:latest
+    name: leplusorg/maven-check-versions:1.0.0@sha256:e8f760bb1faf3d3c333d75810e82289fdd275688421cc8bad04cdbbc757ae5a
   script:
     - '/opt/maven-check-versions.sh'
 ```
