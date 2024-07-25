@@ -1,13 +1,8 @@
-FROM maven:3.9.8@sha256:7a3388321715e15d86f6b540deadeb5cf3e19ac939eda6b94e5e44c681782e9d
+FROM maven:3.9.8@sha256:41f6c1a2580e1e21f9c33c5daff718235be07f45727f5fe0e159aaa2dc65c4ce
 
 HEALTHCHECK NONE
 
 ENTRYPOINT []
-
-ARG USER_NAME=default
-ARG USER_HOME=/home/default
-ARG USER_ID=1000
-ARG USER_GECOS=Default
 
 COPY maven-check-versions.sh /opt/
 
@@ -17,17 +12,8 @@ ENV MAVEN_OPTS="${MAVEN_OPTS}"
 ARG MAVEN_CLI_OPTS="--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
 ENV MAVEN_CLI_OPTS="${MAVEN_CLI_OPTS}"
 
-RUN adduser \
-  --home "${USER_HOME}" \
-  --uid "${USER_ID}" \
-  --gecos "${USER_GECOS}" \
-  --disabled-password \
-  "${USER_NAME}"
+USER ubuntu
 
-ENV HOME "${USER_HOME}"
-
-USER "${USER_NAME}"
-
-WORKDIR "${HOME}"
+WORKDIR /home/ubuntu
 
 CMD ["/opt/maven-check-versions.sh"]
