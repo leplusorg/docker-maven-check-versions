@@ -17,6 +17,16 @@ ENV MAVEN_OPTS="${MAVEN_OPTS}"
 ARG MAVEN_CLI_OPTS="--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
 ENV MAVEN_CLI_OPTS="${MAVEN_CLI_OPTS}"
 
+# hadolint ignore=DL3008
+RUN apt-get update && \
+  apt-get install --no-install-recommends -y adduser && \
+  # Removing documentation packages *after* installing them is kind of hacky,
+  # but it only adds some overhead while building the image.
+  apt-get --purge remove -y .\*-doc$ && \
+  # Remove more unnecessary stuff
+  apt-get clean -y && \
+  rm -rf /var/lib/apt/lists/*
+
 RUN adduser \
   --home "${USER_HOME}" \
   --uid "${USER_ID}" \
