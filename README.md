@@ -84,7 +84,7 @@ maven check versions:
 **Mac/Linux**
 
 ```bash
-docker run --rm -t --user="$(id -u):$(id -g)" -v "$(pwd):/tmp" leplusorg/maven-check-versions
+docker run --rm -t --user="$(id -u):$(id -g)" -v "$(pwd):/opt/project" leplusorg/maven-check-versions
 ```
 
 **Windows**
@@ -92,11 +92,11 @@ docker run --rm -t --user="$(id -u):$(id -g)" -v "$(pwd):/tmp" leplusorg/maven-c
 In `cmd`:
 
 ```batch
-docker run --rm -t -v "%cd%:/tmp" leplusorg/maven-check-versions
+docker run --rm -t -v "%cd%:/opt/project" leplusorg/maven-check-versions
 ```
 
 In PowerShell:
 
 ```pwsh
-docker run --rm -t -v "${PWD}:/tmp" leplusorg/maven-check-versions
+docker run --rm -t -v "${PWD}:/opt/project" leplusorg/maven-check-versions
 ```
