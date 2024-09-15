@@ -14,6 +14,6 @@ ENV MAVEN_CLI_OPTS="${MAVEN_CLI_OPTS}"
 
 USER ubuntu
 
-WORKDIR /home/ubuntu
+WORKDIR /opt/project
 
 CMD ["/opt/maven-check-versions.sh"]
