@@ -58,11 +58,10 @@ permissions: {}
 jobs:
   check:
     runs-on: ubuntu-latest
-    container: leplusorg/maven-check-versions:1.0.0@sha256:e8f760bb1faf3d3c333d75810e82289fdd275688421cc8bad04cdbbc757ae5a
     steps:
-      - uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Check the versions
-        run: /opt/maven-check-versions.sh
+        uses: docker://leplusorg/maven-check-versions:3.9.8@sha256:83d9758a4a0626f58376924c602919f14a782aa49e5e2bfb86de1f797de16cdd
 ```
 
 This way the action can be triggered manually and otherwise it runs
@@ -75,7 +74,29 @@ To use this container in a GitLab step, add the following step to the stage of y
 ```yaml
 maven check versions:
   image:
-    name: leplusorg/maven-check-versions:1.0.0@sha256:e8f760bb1faf3d3c333d75810e82289fdd275688421cc8bad04cdbbc757ae5a
+    name: leplusorg/maven-check-versions:3.9.8@sha256:83d9758a4a0626f58376924c602919f14a782aa49e5e2bfb86de1f797de16cdd
   script:
     - '/opt/maven-check-versions.sh'
+```
+
+## Manually using Docker
+
+**Mac/Linux**
+
+```bash
+docker run --rm -t --user="$(id -u):$(id -g)" -v "$(pwd):/tmp" leplusorg/maven-check-versions
+```
+
+**Windows**
+
+In `cmd`:
+
+```batch
+docker run --rm -t -v "%cd%:/tmp" leplusorg/maven-check-versions
+```
+
+In PowerShell:
+
+```pwsh
+docker run --rm -t -v "${PWD}:/tmp" leplusorg/maven-check-versions
 ```
