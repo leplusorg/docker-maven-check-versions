@@ -50,7 +50,7 @@ name: Maven Check Versions
 
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 permissions: {}
@@ -76,7 +76,7 @@ maven check versions:
   image:
     name: leplusorg/maven-check-versions:3.9.8@sha256:83d9758a4a0626f58376924c602919f14a782aa49e5e2bfb86de1f797de16cdd
   script:
-    - '/opt/maven-check-versions.sh'
+    - "/opt/maven-check-versions.sh"
 ```
 
 ## Manually using Docker
