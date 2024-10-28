@@ -4,13 +4,34 @@ IFS=$'\n\t'
 
 shopt -s lastpipe
 
+# debug mode is off by default
+if [ -z "${DEBUG+x}" ]; then
+	DEBUG=false
+fi
+
+# Honoring GitHub runner debug mode
+if [ "${ACTIONS_RUNNER_DEBUG}" = true ]; then
+	DEBUG=true
+fi
+
+if [ "${DEBUG}" = true ]; then
+	set -o xtrace
+	\echo "DEBUG: current working directory = $(pwd)"
+	\echo 'DEBUG:'
+	# shellcheck disable=SC2012
+	\ls -hal | \sed -e 's/^/DEBUG: /'
+	\echo 'DEBUG:'
+fi
+
 if [ -f mvnw ]; then
+	\echo 'DEBUG: using existing maven wrapper'
 	cmd='./mvnw'
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
 	fi
 else
+	\echo 'DEBUG: using docker-provided maven command'
 	cmd='mvn'
 fi
 
