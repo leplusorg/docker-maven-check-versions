@@ -12,8 +12,7 @@ fi
 # Honoring GitHub runner debug mode
 if [ ! -z "${ACTIONS_RUNNER_DEBUG+x}" ] && [ "${ACTIONS_RUNNER_DEBUG}" = true ]; then
 	DEBUG=true
-fi
-if [ ! -z "${RUNNER_DEBUG+x}" ] && [ "${RUNNER_DEBUG}" = true ]; then
+elif [ ! -z "${RUNNER_DEBUG+x}" ] && [ "${RUNNER_DEBUG}" = true ]; then
 	DEBUG=true
 fi
 
