@@ -37,14 +37,14 @@ if [ -f mvnw ]; then
 	cmd='./mvnw'
 	# Ensure maven wrapper work directory is somewhere we have
 	# write permissions
-	MAVEN_USER_HOME='/opt/maven'
+	MAVEN_USER_HOME="$(\pwd)"
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
 	fi
 else
 	\echo 'DEBUG: using docker-provided maven command'
-	cmd='mvn'
+	cmd='\mvn'
 fi
 
 if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
