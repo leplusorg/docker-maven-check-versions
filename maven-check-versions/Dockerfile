@@ -4,6 +4,8 @@ HEALTHCHECK NONE
 
 ENTRYPOINT []
 
+RUN mkdir -p /opt/maven && chmod 777 /opt/maven
+
 COPY maven-check-versions.sh /opt/
 
 ARG MAVEN_OPTS="-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Djava.awt.headless=true"
