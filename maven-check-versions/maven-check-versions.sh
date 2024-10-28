@@ -35,6 +35,9 @@ if [ -f mvnw ]; then
 		\echo 'DEBUG: using existing maven wrapper'
 	fi
 	cmd='./mvnw'
+	# Ensure maven wrapper work directory is somewhere we have
+	# write permissions
+	MAVEN_USER_HOME="$(pwd)"
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
