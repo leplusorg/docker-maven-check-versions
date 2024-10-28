@@ -24,7 +24,9 @@ if [ "${DEBUG}" = true ]; then
 fi
 
 if [ -f mvnw ]; then
-	\echo 'DEBUG: using existing maven wrapper'
+	if [ "${DEBUG}" = true ]; then
+		\echo 'DEBUG: using existing maven wrapper'
+	fi
 	cmd='./mvnw'
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
