@@ -21,7 +21,7 @@ if [ "${DEBUG}" = true ]; then
 	# If maven wrapper debugging is not already configured, let's
 	# turn it on too.
 	if [ -n "${MVNW_VERBOSE+x}" ]; then
-	    export MVNW_VERBOSE=true
+		export MVNW_VERBOSE=true
 	fi
 	\echo "DEBUG: current working directory = $(pwd)"
 	\echo 'DEBUG:'
