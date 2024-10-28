@@ -10,12 +10,19 @@ if [ -z "${DEBUG+x}" ]; then
 fi
 
 # Honoring GitHub runner debug mode
-if [ "${ACTIONS_RUNNER_DEBUG}" = true ]; then
+if [ -n "${ACTIONS_RUNNER_DEBUG+x}" ] && [ "${ACTIONS_RUNNER_DEBUG}" = true ]; then
+	DEBUG=true
+elif [ -n "${RUNNER_DEBUG+x}" ] && [ "${RUNNER_DEBUG}" = true ]; then
 	DEBUG=true
 fi
 
 if [ "${DEBUG}" = true ]; then
 	set -o xtrace
+	# If maven wrapper debugging is not already configured, let's
+	# turn it on too.
+	if [ -n "${MVNW_VERBOSE+x}" ]; then
+	    MVNW_VERBOSE=true
+	fi
 	\echo "DEBUG: current working directory = $(pwd)"
 	\echo 'DEBUG:'
 	# shellcheck disable=SC2012
@@ -24,8 +31,13 @@ if [ "${DEBUG}" = true ]; then
 fi
 
 if [ -f mvnw ]; then
-	\echo 'DEBUG: using existing maven wrapper'
+	if [ "${DEBUG}" = true ]; then
+		\echo 'DEBUG: using existing maven wrapper'
+	fi
 	cmd='./mvnw'
+	# Ensure maven wrapper work directory is somewhere we have
+	# write permissions
+	MAVEN_USER_HOME='/opt/maven'
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
