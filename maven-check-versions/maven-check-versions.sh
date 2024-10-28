@@ -21,7 +21,7 @@ if [ "${DEBUG}" = true ]; then
 	# If maven wrapper debugging is not already configured, let's
 	# turn it on too.
 	if [ -n "${MVNW_VERBOSE+x}" ]; then
-	    MVNW_VERBOSE=true
+		export MVNW_VERBOSE=true
 	fi
 	\echo "DEBUG: current working directory = $(pwd)"
 	\echo 'DEBUG:'
@@ -37,7 +37,7 @@ if [ -f mvnw ]; then
 	cmd='./mvnw'
 	# Ensure maven wrapper work directory is somewhere we have
 	# write permissions
-	MAVEN_USER_HOME='/opt/maven'
+	export MAVEN_USER_HOME='/opt/maven'
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
