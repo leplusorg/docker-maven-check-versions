@@ -16,6 +16,11 @@ fi
 
 if [ "${DEBUG}" = true ]; then
 	set -o xtrace
+	# If maven wrapper debugging is not already configured, let's
+	# turn it on too.
+	if [ -n "${MVNW_VERBOSE+x}" ]; then
+	    export MVNW_VERBOSE=true
+	fi
 	\echo "DEBUG: current working directory = $(pwd)"
 	\echo 'DEBUG:'
 	# shellcheck disable=SC2012
@@ -26,6 +31,9 @@ fi
 if [ -f mvnw ]; then
 	\echo 'DEBUG: using existing maven wrapper'
 	cmd='./mvnw'
+	# Ensure maven wrapper work directory is somewhere we have
+	# write permissions
+	export MAVEN_USER_HOME='/opt/maven'
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
