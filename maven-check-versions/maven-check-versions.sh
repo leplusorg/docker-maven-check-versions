@@ -37,7 +37,7 @@ if [ -f mvnw ]; then
 	cmd='./mvnw'
 	# Ensure maven wrapper work directory is somewhere we have
 	# write permissions
-	export MAVEN_USER_HOME="$(\pwd)"
+	export MAVEN_USER_HOME="$(\pwd)/.m2"
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
