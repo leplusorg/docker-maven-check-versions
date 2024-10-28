@@ -18,6 +18,11 @@ fi
 
 if [ "${DEBUG}" = true ]; then
 	set -o xtrace
+	# If maven wrapper debugging is not already configured, let's
+	# turn it on too.
+	if [ -n "${MVNW_VERBOSE+x}" ]; then
+	    MVNW_VERBOSE=true
+	fi
 	\echo "DEBUG: current working directory = $(pwd)"
 	\echo 'DEBUG:'
 	# shellcheck disable=SC2012
