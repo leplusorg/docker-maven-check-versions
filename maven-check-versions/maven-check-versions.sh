@@ -23,6 +23,17 @@ if [ "${DEBUG}" = true ]; then
 	if [ -n "${MVNW_VERBOSE+x}" ]; then
 		export MVNW_VERBOSE=true
 	fi
+fi
+
+# Support working_directory input if used as GitHub action
+if [ -n "${ENV_WORKING_DIRECTORY+x}" ]; then
+ if [ "${DEBUG}" = true ]; then
+		\echo "DEBUG: changing working directory to: ${ENV_WORKING_DIRECTORY}"
+	fi
+ cd "${ENV_WORKING_DIRECTORY}"
+fi
+
+if [ "${DEBUG}" = true ]; then
 	\echo "DEBUG: current working directory = $(pwd)"
 	\echo 'DEBUG:'
 	# shellcheck disable=SC2012
