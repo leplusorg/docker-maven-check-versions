@@ -26,11 +26,11 @@ if [ "${DEBUG}" = true ]; then
 fi
 
 # Support working_directory input if used as GitHub action
-if [ -n "${ENV_WORKING_DIRECTORY+x}" ]; then
+if [ -n "${INPUT_WORKING_DIRECTORY+x}" ]; then
 	if [ "${DEBUG}" = true ]; then
-		\echo "DEBUG: changing working directory to: ${ENV_WORKING_DIRECTORY}"
+		\echo "DEBUG: changing working directory to: ${INPUT_WORKING_DIRECTORY}"
 	fi
-	cd "${ENV_WORKING_DIRECTORY}"
+	cd "${INPUT_WORKING_DIRECTORY}"
 fi
 
 if [ "${DEBUG}" = true ]; then
@@ -57,7 +57,7 @@ else
 	if [ "${DEBUG}" = true ]; then
 		\echo 'DEBUG: using docker-provided maven command'
 	fi
-	cmd='\mvn'
+	cmd=$(\which mvn)
 fi
 
 if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
