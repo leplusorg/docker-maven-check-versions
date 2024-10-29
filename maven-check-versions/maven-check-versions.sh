@@ -10,9 +10,7 @@ if [ -z "${DEBUG+x}" ]; then
 fi
 
 # Honoring GitHub runner debug mode
-if [ -n "${ACTIONS_RUNNER_DEBUG+x}" ] && [ "${ACTIONS_RUNNER_DEBUG}" = true ]; then
-	DEBUG=true
-elif [ -n "${RUNNER_DEBUG+x}" ] && [ "${RUNNER_DEBUG}" = true ]; then
+if [ -n "${RUNNER_DEBUG+x}" ] && [ "${RUNNER_DEBUG}" = 1 ]; then
 	DEBUG=true
 fi
 
