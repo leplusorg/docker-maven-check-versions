@@ -43,7 +43,9 @@ if [ -f mvnw ]; then
 		unset MAVEN_CONFIG
 	fi
 else
-	\echo 'DEBUG: using docker-provided maven command'
+	if [ "${DEBUG}" = true ]; then
+		\echo 'DEBUG: using docker-provided maven command'
+	fi
 	cmd='\mvn'
 fi
 
