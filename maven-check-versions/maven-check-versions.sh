@@ -66,7 +66,7 @@ fi
 
 rc=0
 
-exec "${cmd}" "${opts[@]}" \
+"${cmd}" "${opts[@]}" \
 	versions:display-dependency-updates \
 	versions:display-plugin-updates \
 	versions:display-property-updates |
