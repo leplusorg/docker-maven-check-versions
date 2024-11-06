@@ -2,8 +2,6 @@ FROM maven:3.9.9@sha256:440a97a9304d5f66cb96e01161724d0ac3a50d1d90c4cb99dffd94fe
 
 HEALTHCHECK NONE
 
-ENTRYPOINT []
-
 RUN mkdir -p /opt/maven && chmod 777 /opt/maven
 
 COPY maven-check-versions.sh /opt/
@@ -19,3 +17,5 @@ USER ubuntu
 WORKDIR /opt/project
 
 CMD ["/opt/maven-check-versions.sh"]
+
+ENTRYPOINT []
