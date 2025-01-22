@@ -58,6 +58,10 @@ else
 	cmd=$(\which mvn)
 fi
 
+if [ -z "${IGNORED_VERSIONS+x}" ]; then
+	IGNORED_VERSIONS=''
+fi
+
 if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
 	opts=()
 else
@@ -66,7 +70,7 @@ fi
 
 rc=0
 
-"${cmd}" "${opts[@]}" \
+"${cmd}" "-Dmaven.version.ignore=${IGNORED_VERSIONS}" "${opts[@]}" \
 	versions:display-dependency-updates \
 	versions:display-plugin-updates \
 	versions:display-property-updates |
