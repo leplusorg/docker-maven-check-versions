@@ -6,4 +6,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: "sh -c $'[ $$(id -u) -eq 1000 ] && echo \'<project><modelVersion>4.0.0</modelVersion><groupId>foo</groupId><artifactId>bar</artifactId><version>1</version></project>\' > pom.xml  && /opt/maven-check-versions.sh'"
+    command: "sh -c '[ $$(id -u) -eq 1000 ] && echo \'<project><modelVersion>4.0.0</modelVersion><groupId>foo</groupId><artifactId>bar</artifactId><version>1</version></project>\' > pom.xml  && /opt/maven-check-versions.sh'"
