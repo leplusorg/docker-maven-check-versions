@@ -87,8 +87,6 @@ maven versions plugin as `maven.version.ignore` (see
 <https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property>
 for details).
 
-
-
 ## Manually using Docker
 
 **Mac/Linux**
