@@ -81,7 +81,7 @@ maven check versions:
 
 ## Ignoring versions
 
-You can define which new versions should be ignored using the
+You can define which versions should be ignored using the
 `IGNORED_VERSIONS` OS environment variable which will be passed to the
 maven versions plugin as `maven.version.ignore` (see
 <https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property>
