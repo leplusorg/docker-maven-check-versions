@@ -86,7 +86,7 @@ You can define which versions should be ignored using the
 maven versions plugin as `maven.version.ignore` (see
 <https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property>
 for details). For example, you can set `IGNORED_VERSIONS` to
-`(?i).+-(alpha|beta).+,(?i).+-m\d+,(?i).+-rc\d+` to ignore alpha,
+`(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+` to ignore alpha,
 beta, mark or release candidate versions.
 
 ## Manually using Docker
