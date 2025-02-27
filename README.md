@@ -7,6 +7,8 @@ Docker container to run the Maven Versions plugin.
 [![Docker Stars](https://img.shields.io/docker/stars/leplusorg/maven-check-versions)](https://hub.docker.com/r/leplusorg/maven-check-versions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/leplusorg/maven-check-versions)](https://hub.docker.com/r/leplusorg/maven-check-versions)
 [![Docker Version](https://img.shields.io/docker/v/leplusorg/maven-check-versions?sort=semver)](https://hub.docker.com/r/leplusorg/maven-check-versions)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/10080/badge)](https://bestpractices.coreinfrastructure.org/projects/10080)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/leplusorg/docker-maven-check-versions/badge)](https://securityscorecards.dev/viewer/?uri=github.com/leplusorg/docker-maven-check-versions)
 
 ## Purpose
 
