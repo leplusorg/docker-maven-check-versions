@@ -110,3 +110,14 @@ In PowerShell:
 ```pwsh
 docker run --rm -t -v "${PWD}:/opt/project" leplusorg/maven-check-versions
 ```
+
+## Software Bill of Materials (SBOM)
+
+To get the SBOM for the latest image (in SPDX JSON format), use the
+following command:
+
+```bash
+docker buildx imagetools inspect leplusorg/maven-check-versions --format '{{ json (index .SBOM "linux/amd64").SPDX }}'
+```
+
+Replace `linux/amd64` by the desired platform (`linux/amd64`, `linux/arm64` etc.).
