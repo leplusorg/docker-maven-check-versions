@@ -2,6 +2,8 @@ FROM maven:3.9.9@sha256:70591cb7a67e12414b16603c6e89d95625e802667f2a0932d5362c45
 
 HEALTHCHECK NONE
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+
 RUN mkdir -p /opt/maven && chmod 777 /opt/maven
 
 COPY maven-check-versions.sh /opt/
