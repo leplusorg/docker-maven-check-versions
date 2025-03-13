@@ -4,7 +4,7 @@ HEALTHCHECK NONE
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
-RUN mkdir -p /opt/maven && chmod 777 /opt/maven
+RUN mkdir -m 777 /opt/maven
 
 COPY maven-check-versions.sh /opt/
 
