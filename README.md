@@ -86,7 +86,7 @@ maven check versions:
 You can define which versions should be ignored using the
 `IGNORED_VERSIONS` OS environment variable which will be passed to the
 maven versions plugin as `maven.version.ignore` (see
-[here](https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property) 
+[here](https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property)
 for details). For example, you can set `IGNORED_VERSIONS` to
 `(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+` to ignore alpha,
 beta, mark or release candidate versions.
