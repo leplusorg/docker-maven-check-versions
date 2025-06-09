@@ -1,6 +1,6 @@
 # Maven Check Versions
 
-Docker container to run the Maven Versions plugin.
+Multi-platform Docker container to run the Maven Versions plugin.
 
 [![Dockerfile](https://img.shields.io/badge/GitHub-Dockerfile-blue)](https://img.shields.io/badge/GitHub-Dockerfile-blue)](maven-check-versions/Dockerfile)
 [![Docker Build](https://github.com/leplusorg/docker-maven-check-versions/workflows/Docker/badge.svg)](https://github.com/leplusorg/docker-maven-check-versions/actions?query=workflow:"Docker")
