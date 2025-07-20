@@ -18,7 +18,7 @@ This containers is meant to be used in CI/CD pipeline to detect when newer versi
 
 The image comes with Maven installed so it only needs a pom.xml to analyze. However if you want to control the version of Maven to be used instead, just make sure that there is a Maven wrapper script (mvnw) pointing to that version next to the pom.xml. For more information on how to install the maven wrapper in your project, see the [documentation](https://maven.apache.org/wrapper/).
 
-The script uses the Versions plugin (more details [here](https://www.mojohaus.org/versions-maven-plugin/)). By default Maven will use the latest version of the plugin that it supports but you can set the desired version inside your pom.xml:
+The script uses the [Versions plugin](https://www.mojohaus.org/versions-maven-plugin/)). By default Maven will use the latest version of the plugin that it supports but you can set the desired version inside your pom.xml:
 
 ```xml
 <properties>
@@ -85,9 +85,9 @@ maven check versions:
 
 You can define which versions should be ignored using the
 `IGNORED_VERSIONS` OS environment variable which will be passed to the
-maven versions plugin as `maven.version.ignore` (see
-[here](https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property)
-for details). For example, you can set `IGNORED_VERSIONS` to
+maven versions plugin as `maven.version.ignore` (see here for
+[details](https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property)).
+For example, you can set `IGNORED_VERSIONS` to
 `(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+` to ignore alpha,
 beta, mark or release candidate versions.
 
