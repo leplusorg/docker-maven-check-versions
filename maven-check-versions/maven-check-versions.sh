@@ -26,22 +26,22 @@ fi
 # Support working_directory input if used as GitHub action
 if [ -n "${INPUT_WORKING_DIRECTORY+x}" ]; then
 	if [ "${DEBUG}" = true ]; then
-		\echo "DEBUG: changing working directory to: ${INPUT_WORKING_DIRECTORY}"
+		echo "DEBUG: changing working directory to: ${INPUT_WORKING_DIRECTORY}"
 	fi
 	cd "${INPUT_WORKING_DIRECTORY}"
 fi
 
 if [ "${DEBUG}" = true ]; then
-	\echo "DEBUG: current working directory = $(pwd)"
-	\echo 'DEBUG:'
+	echo "DEBUG: current working directory = $(pwd)"
+	echo 'DEBUG:'
 	# shellcheck disable=SC2012
 	\ls -hal | \sed -e 's/^/DEBUG: /'
-	\echo 'DEBUG:'
+	echo 'DEBUG:'
 fi
 
 if [ -f mvnw ]; then
 	if [ "${DEBUG}" = true ]; then
-		\echo 'DEBUG: using existing maven wrapper'
+		echo 'DEBUG: using existing maven wrapper'
 	fi
 	cmd='./mvnw'
 	# Ensure maven wrapper work directory is somewhere we have
@@ -53,7 +53,7 @@ if [ -f mvnw ]; then
 	fi
 else
 	if [ "${DEBUG}" = true ]; then
-		\echo 'DEBUG: using docker-provided maven command'
+		echo 'DEBUG: using docker-provided maven command'
 	fi
 	cmd=$(\which mvn)
 fi
@@ -75,7 +75,7 @@ rc=0
 	versions:display-plugin-updates \
 	versions:display-property-updates |
 	while read -r l; do
-		\echo "${l}"
+		echo "${l}"
 		if [[ "${l}" == *"[ERROR]"* ||
 			"${l}" == *"has a newer version:"* ||
 			"${l}" == *"have newer versions:"* ||
