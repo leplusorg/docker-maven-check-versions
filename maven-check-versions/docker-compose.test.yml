@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     command: |
       sh -c '
-        set -euo pipefail
+        set -eu
         if [ $(id -u) -ne 1000 ]; then
           exit 1
         fi
