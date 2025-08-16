@@ -4,5 +4,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: >
-      sh -c '[ $$(id -u) -eq 1000 ] && echo "<project><modelVersion>4.0.0</modelVersion><groupId>foo</groupId><artifactId>bar</artifactId><version>1</version><prerequisites><maven>2.0.2</maven></prerequisites></project>" > pom.xml  && /opt/maven-check-versions.sh'
+    command: |
+      sh -c '
+        set -euo pipefail
+        if [ $(id -u) -ne 1000 ]; then
+          exit 1
+        fi
+        echo "<project><modelVersion>4.0.0</modelVersion><groupId>foo</groupId><artifactId>bar</artifactId><version>1</version><prerequisites><maven>2.0.2</maven></prerequisites></project>" > pom.xml
+        /opt/maven-check-versions.sh
+      '
