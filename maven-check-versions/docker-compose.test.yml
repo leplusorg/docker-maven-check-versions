@@ -10,7 +10,7 @@ services:
         if [ $(id -u) -ne 1000 ]; then
           exit 1
         fi
-        MAVEN_CLI_OPTS="-DprocessDependencyManagementTransitive=false '-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+'"
+        MAVEN_CLI_OPTS="-DprocessDependencyManagementTransitive=false \"-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+\""
         echo "<project><modelVersion>4.0.0</modelVersion><groupId>foo</groupId><artifactId>bar</artifactId><version>1</version><prerequisites><maven>2.0.2</maven></prerequisites></project>" > pom.xml
         /opt/maven-check-versions.sh
       '
