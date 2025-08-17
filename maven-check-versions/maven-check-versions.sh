@@ -70,7 +70,7 @@ fi
 
 rc=0
 
-"${cmd}" "-Dmaven.version.ignore=${IGNORED_VERSIONS}" "${opts[@]+"${opts[@]}"}" \
+"${cmd}" "-DprocessDependencyManagementTransitive=false" "-Dmaven.version.ignore=${IGNORED_VERSIONS}" "${opts[@]+"${opts[@]}"}" \
 	versions:display-dependency-updates \
 	versions:display-plugin-updates \
 	versions:display-property-updates |
