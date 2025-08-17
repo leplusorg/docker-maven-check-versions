@@ -58,19 +58,15 @@ else
 	cmd=$(\which mvn)
 fi
 
-if [ -z "${IGNORED_VERSIONS+x}" ]; then
-	IGNORED_VERSIONS=''
-fi
-
 if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
-	opts=()
+	opts=('-DprocessDependencyManagementTransitive=false')
 else
 	IFS=' ' read -r -a opts <<<"${MAVEN_CLI_OPTS}"
 fi
 
 rc=0
 
-"${cmd}" "-DprocessDependencyManagementTransitive=false" "-Dmaven.version.ignore=${IGNORED_VERSIONS}" "${opts[@]+"${opts[@]}"}" \
+"${cmd}" "${opts[@]+"${opts[@]}"}" \
 	versions:display-dependency-updates \
 	versions:display-plugin-updates \
 	versions:display-property-updates |
