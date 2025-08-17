@@ -65,7 +65,7 @@ jobs:
       - name: Check the versions
         uses: docker://leplusorg/maven-check-versions:3.9.9@sha256:abdd53328be1c87d7bf21b868d47d7934b28dfc66e168d9625877616ab14d6da
         env:
-          MAVEN_CLI_OPTS: "-DprocessDependencyManagementTransitive=false '-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+'"
+          MAVEN_CLI_EXTRA_OPTS: "-DprocessDependencyManagementTransitive=false '-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+'"
 ```
 
 This way the action can be triggered manually and otherwise it runs
@@ -82,7 +82,7 @@ maven check versions:
   script:
     - "/opt/maven-check-versions.sh"
   variables:
-    MAVEN_CLI_OPTS: "-DprocessDependencyManagementTransitive=false '-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+'"
+    MAVEN_CLI_EXTRA_OPTS: "-DprocessDependencyManagementTransitive=false '-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+'"
 ```
 
 ## Ignoring versions
@@ -91,9 +91,9 @@ You can define which versions should be ignored using the
 `maven.version.ignore` system property (see here for
 [details](https://www.mojohaus.org/versions/versions-maven-plugin/version-rules.html#Using_the_maven.version.ignore_property)). To
 set `maven.version.ignore` inside the Docker container, you need to
-override the default `MAVEN_CLI_OPTS` OS environment variable which
+override the default `MAVEN_CLI_EXTRA_OPTS` OS environment variable which
 will be passed to the maven CLI command. For example, you can set
-`MAVEN_CLI_OPTS` to `-DprocessDependencyManagementTransitive=false -Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+`
+`MAVEN_CLI_EXTRA_OPTS` to `-DprocessDependencyManagementTransitive=false -Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+`
 to ignore transitive dependencies and all alpha, beta, mark or release
 candidate versions.
 

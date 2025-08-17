@@ -58,15 +58,25 @@ else
 	cmd=$(\which mvn)
 fi
 
+if [ -z "${MAVEN_OPTS+x}" ]; then
+	MAVEN_OPTS=-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true
+fi
+
 if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
-	opts=('-DprocessDependencyManagementTransitive=false')
+	opts=(--batch-mode --errors --fail-at-end --show-version)
 else
 	IFS=' ' read -r -a opts <<<"${MAVEN_CLI_OPTS}"
 fi
 
+if [ -z "${MAVEN_CLI_EXTRA_OPTS+x}" ]; then
+	extra_opts=(-DprocessDependencyManagementTransitive=false)
+else
+	IFS=' ' read -r -a extra_opts <<<"${MAVEN_CLI_EXTRA_OPTS}"
+fi
+
 rc=0
 
-"${cmd}" "${opts[@]+"${opts[@]}"}" \
+"${cmd}" "${opts[@]}" "${extra_opts[@]}" \
 	versions:display-dependency-updates \
 	versions:display-plugin-updates \
 	versions:display-property-updates |
