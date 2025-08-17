@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Check the versions
-        uses: docker://leplusorg/maven-check-versions:3.9.9@sha256:abdd53328be1c87d7bf21b868d47d7934b28dfc66e168d9625877616ab14d6da
+        uses: docker://leplusorg/maven-check-versions:3.9.11@sha256:abdd53328be1c87d7bf21b868d47d7934b28dfc66e168d9625877616ab14d6da
         env:
           MAVEN_CLI_EXTRA_OPTS: "-DprocessDependencyManagementTransitive=false '-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+'"
 ```
@@ -78,7 +78,7 @@ To use this container in a GitLab step, add the following step to the stage of y
 ```yaml
 maven check versions:
   image:
-    name: leplusorg/maven-check-versions:3.9.9@sha256:abdd53328be1c87d7bf21b868d47d7934b28dfc66e168d9625877616ab14d6da
+    name: leplusorg/maven-check-versions:3.9.11@sha256:abdd53328be1c87d7bf21b868d47d7934b28dfc66e168d9625877616ab14d6da
   script:
     - "/opt/maven-check-versions.sh"
   variables:
