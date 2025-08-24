@@ -20,6 +20,6 @@ USER ubuntu
 
 WORKDIR /opt/project
 
-CMD ["/opt/maven-check-versions.sh"]
+CMD []
 
-ENTRYPOINT []
+ENTRYPOINT ["/opt/maven-check-versions.sh"]
