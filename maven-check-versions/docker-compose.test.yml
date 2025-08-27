@@ -8,7 +8,8 @@ services:
     command: |
       sh -c '
         set -eu
-        if [ $(id -u) -ne 1000 ]; then
+        # Use $$ to prevent interpolation 
+        if [ $$(id -u) -ne 1000 ]; then
           exit 1
         fi
         MAVEN_CLI_OPTS="-DprocessDependencyManagementTransitive=false \"-Dmaven.version.ignore=(?i).+-(alpha|beta).+,(?i).+-m\\d+,(?i).+-rc\\d+\""
