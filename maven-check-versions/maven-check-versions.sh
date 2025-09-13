@@ -39,11 +39,15 @@ if [ "${DEBUG}" = true ]; then
 	echo 'DEBUG:'
 fi
 
-if [ -f mvnw ]; then
+if [ -f mvnw ] || [ -f mvnw.sh ]; then
 	if [ "${DEBUG}" = true ]; then
 		echo 'DEBUG: using existing maven wrapper'
 	fi
-	cmd='./mvnw'
+	if [ -f mvnw ]; then
+		cmd='./mvnw'
+	else
+		cmd='./mvnw.sh'
+	fi
 	# Ensure maven wrapper work directory is somewhere we have
 	# write permissions
 	export MAVEN_USER_HOME="/opt/maven/.m2"
