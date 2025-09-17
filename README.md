@@ -119,6 +119,19 @@ In PowerShell:
 docker run --rm -t -v "${PWD}:/opt/project" leplusorg/maven-check-versions
 ```
 
+If you want to provide your own Maven distribution, you can mount it
+into the docker immage and point to it using the `MAVEN_HOME`
+environment variable:
+
+```bash
+docker run --rm -t --user="$(id -u):$(id -g)" -e "MAVEN_HOME=/opt/maven/dist" -v "${HOME}/apache-maven-3.9.11:/opt/maven/dist" -v "$(pwd):/opt/project" leplusorg/maven-check-versions
+```
+
+The location of the maven configuration and cache is controlled by the
+`MAVEN_CONFIG` environment variable (default is `/opt/maven/.m2`). If
+you overwrite it, make sure that your user has write permissions
+for the chosen location.
+
 ## Software Bill of Materials (SBOM)
 
 To get the SBOM for the latest image (in SPDX JSON format), use the

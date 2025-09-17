@@ -20,6 +20,8 @@ USER ubuntu
 
 WORKDIR /opt/project
 
+ENV MAVEN_USER_HOME="/opt/maven/.m2"
+
 ENTRYPOINT ["/opt/maven-check-versions.sh"]
 
 CMD []

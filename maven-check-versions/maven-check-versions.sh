@@ -41,25 +41,22 @@ fi
 
 if [ -f mvnw ] || [ -f mvnw.sh ]; then
 	if [ "${DEBUG}" = true ]; then
-		echo 'DEBUG: using existing maven wrapper'
+		echo 'DEBUG: using project maven wrapper'
 	fi
 	if [ -f mvnw ]; then
 		cmd='./mvnw'
 	else
 		cmd='./mvnw.sh'
 	fi
-	# Ensure maven wrapper work directory is somewhere we have
-	# write permissions
-	export MAVEN_USER_HOME="/opt/maven/.m2"
 	if [ -n "${MAVEN_CONFIG+x}" ]; then
 		# resolve conflict with mvnw
 		unset MAVEN_CONFIG
 	fi
 else
 	if [ "${DEBUG}" = true ]; then
-		echo 'DEBUG: using docker-provided maven command'
+		echo 'DEBUG: using maven distribution'
 	fi
-	cmd=$(\which mvn)
+	cmd="${MAVEN_HOME}/bin/mvn"
 fi
 
 if [ -z "${MAVEN_OPTS+x}" ]; then
