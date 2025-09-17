@@ -4,8 +4,6 @@ HEALTHCHECK NONE
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
-RUN mkdir -m 777 /opt/maven
-
 COPY maven-check-versions.sh /opt/maven-check-versions.sh
 
 RUN chmod ugo+rx /opt/maven-check-versions.sh
@@ -16,11 +14,14 @@ ENV MAVEN_OPTS="${MAVEN_OPTS}"
 ARG MAVEN_CLI_OPTS="--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
 ENV MAVEN_CLI_OPTS="${MAVEN_CLI_OPTS}"
 
+RUN mkdir -m 777 /opt/maven
+
+ARG MAVEN_USER_HOME="/opt/maven/.m2"
+ENV MAVEN_USER_HOME="${MAVEN_USER_HOME}"
+
 USER ubuntu
 
 WORKDIR /opt/project
-
-ENV MAVEN_USER_HOME="/opt/maven/.m2"
 
 ENTRYPOINT ["/opt/maven-check-versions.sh"]
 
