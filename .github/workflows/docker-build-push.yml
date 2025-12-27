@@ -63,6 +63,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef # v3.6.0
+        if: github.ref == 'refs/heads/main'
+        with:
+          registry: dhi.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         id: build
         with:
@@ -98,7 +104,7 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          VERSION="$(\grep "${IMAGE}/Dockerfile" -e '^FROM' | \head -n 1 | \sed -e 's/@.*$//; s/^.*://;')"
+          VERSION="$(\grep "${IMAGE}/Dockerfile" -e '^FROM' | \head -n 1 | \sed -e 's/@.*$//; s/^.*://; s/-.*$//;')"
           if [[ "${VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
             echo "VERSION=${VERSION}" >> "${GITHUB_ENV}"
           fi

@@ -1,4 +1,4 @@
-FROM maven:3.9.12@sha256:800a33a4cb190082c47abcd57944c852e1dece834f92c0aef65bea6336c52a72
+FROM dhi.io/maven:3.9.12-jdk25-debian13-dev@sha256:0a9d6751a403be81eeaed3b7107007d8f4d3e67bb251556f757857292cf78797
 
 HEALTHCHECK NONE
 
@@ -19,7 +19,7 @@ RUN mkdir -m 777 /opt/maven
 ARG MAVEN_USER_HOME="/opt/maven/.m2"
 ENV MAVEN_USER_HOME="${MAVEN_USER_HOME}"
 
-USER ubuntu
+USER nonroot
 
 WORKDIR /opt/project
 

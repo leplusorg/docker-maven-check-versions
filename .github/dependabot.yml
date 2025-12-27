@@ -1,7 +1,18 @@
 ---
 version: 2
+
+registries:
+  docker-hardened:
+    type: "docker-registry"
+    url: "dhi.io"
+    replaces-base: true
+    username: ${{ secrets.DOCKERHUB_USERNAME }}
+    password: ${{ secrets.DOCKERHUB_TOKEN }}
+
 updates:
   - package-ecosystem: "docker"
+    registries:
+      - "docker-hardened"
     directory: "/maven-check-versions"
     schedule:
       interval: "daily"
