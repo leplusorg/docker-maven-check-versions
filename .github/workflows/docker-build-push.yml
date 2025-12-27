@@ -65,6 +65,8 @@ jobs:
       - name: Test the Docker image
         working-directory: ${{ env.IMAGE }}
         shell: bash
+        env:
+          BUILDX_NO_DEFAULT_ATTESTATIONS: 1
         run: |
           set -euo pipefail
           IFS=$'\n\t'
