@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Requires bash 4.2+
+# Makes rc increment visible outside of loop
 shopt -s lastpipe
 
 # debug mode is off by default
