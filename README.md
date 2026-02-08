@@ -12,7 +12,7 @@ Multi-platform Docker container to run the Maven Versions plugin.
 
 ## Purpose
 
-This containers is meant to be used in CI/CD pipeline to detect when newer versions of Maven dependencies or plugins are avaible.
+This containers is meant to be used in CI/CD pipeline to detect when newer versions of Maven dependencies or plugins are available.
 
 ## Requirements
 
