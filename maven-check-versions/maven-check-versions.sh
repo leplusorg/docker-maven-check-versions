@@ -37,7 +37,7 @@ if [ "${DEBUG}" = true ]; then
 	echo "DEBUG: current working directory = $(pwd)"
 	echo 'DEBUG:'
 	# shellcheck disable=SC2012 # [Use find instead of ls]: overkill
-	\ls -hal | \sed -e 's/^/DEBUG: /'
+	ls -hal | sed -e 's/^/DEBUG: /'
 	echo 'DEBUG:'
 fi
 
